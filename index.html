@@ -16,12 +16,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            --primary: #FF4D00;
+            --primary: #FF5E00;
+            /* Vibrant Deep Orange */
             --primary-dark: #D43F00;
-            --secondary: #8B4513;
-            --bg-base: #FDF5E6;
-            --bg-accent: #FAEBD7;
-            --text-dark: #2D1B0D;
+            --secondary: #2D1B0D;
+            /* Rich Chocolate Brown */
+            --bg-base: #F9F1E2;
+            /* Premium Warm Silk */
+            --accent: #FFD700;
+            /* Luxury Gold */
+            --text-dark: #1A0F08;
             --text-light: #5C4033;
         }
 
@@ -49,7 +53,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* --- Live Moving Background --- */
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -58,7 +61,10 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background: radial-gradient(circle at center, #FFF4E0 0%, #FDF5E6 100%);
+            background: linear-gradient(rgba(249, 241, 226, 0.96), rgba(249, 241, 226, 0.92)), url('assets/branding_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .food-icon {
@@ -160,18 +166,18 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 249, 240, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 220, 180, 0.4);
             border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-            transition: 0.3s;
+            box-shadow: 0 20px 40px rgba(45, 27, 13, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 249, 240, 0.9);
+            box-shadow: 0 30px 60px rgba(45, 27, 13, 0.1);
         }
 
         .section-header {
@@ -210,9 +216,107 @@
 
         /* --- Utility classes --- */
         .text-gradient {
-            background: linear-gradient(to right, var(--text-dark), var(--primary));
+            background: linear-gradient(135deg, var(--text-dark) 30%, var(--primary) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .btn-order {
+            background: linear-gradient(135deg, var(--primary), #D9480F);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 100px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(234, 88, 12, 0.3);
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-order:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(234, 88, 12, 0.4);
+        }
+
+        .btn-order::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .btn-order:hover::after {
+            left: 120%;
+        }
+
+        /* --- Cinematic Slider Animations --- */
+        @keyframes marquee-horizontal {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            padding: 60px 0;
+            background: linear-gradient(to right, rgba(26, 15, 8, 0.6), rgba(45, 27, 13, 0.6));
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 94, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 94, 0, 0.2);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee-horizontal 70s linear infinite;
+        }
+
+        .slide-item {
+            flex: 0 0 auto;
+            width: 420px;
+            height: 520px;
+            margin: 0 25px;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .slide-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 15, 8, 0.4), transparent);
+            pointer-events: none;
+        }
+
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .slide-item:hover {
+            border-color: var(--primary);
         }
     </style>
 </head>
@@ -224,58 +328,143 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-white/50 backdrop-blur-md">
+    <nav
+        class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-[#F9F1E2]/60 backdrop-blur-xl border-b border-orange-100/30">
         <div class="flex items-center gap-2">
             <span class="text-2xl font-black tracking-tighter text-orange-600">NORIE</span>
             <span class="text-2xl font-light text-brown-800">CONCEPT</span>
         </div>
         <div class="hidden md:flex gap-10 font-bold text-sm uppercase tracking-widest text-brown-900">
-            <a href="#about" class="hover:text-orange-600 transition">Our Story</a>
-            <a href="#menu" class="hover:text-orange-600 transition">The Menu</a>
+            <a href="#about" class="hover:text-orange-600 transition">Story</a>
+            <a href="#gallery" class="hover:text-orange-600 transition">Gallery</a>
+            <a href="#menu" class="hover:text-orange-600 transition">Menu</a>
+            <a href="#training" class="hover:text-orange-600 transition">Academy</a>
             <a href="#catering" class="hover:text-orange-600 transition">Catering</a>
             <a href="#contact" class="hover:text-orange-600 transition">Contact</a>
         </div>
         <a href="https://wa.me/2348028477776"
-            class="bg-orange-600 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-700 transition">Order
+            class="bg-orange-600 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest hover:bg-orange-700 transition shadow-lg shadow-orange-600/20">Order
             Now</a>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center text-center">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="text-left animate-slide-up">
-                <h4 class="text-orange-600 font-black uppercase tracking-[0.3em] mb-4">Snacks • Drinks • Catering</h4>
-                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] mb-8 text-gradient">
-                    DRESSED <br> TO <span class="playfair italic">THRILL</span>
+    <section class="min-h-screen pt-40 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
+        <!-- Floating Decor -->
+        <div class="absolute top-1/4 left-10 w-32 h-32 bg-orange-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-10 w-64 h-64 bg-orange-600/5 rounded-full blur-[100px] animate-pulse">
+        </div>
+
+        <div class="max-w-5xl w-full relative z-10 text-center">
+            <div class="animate-slide-up">
+                <div
+                    class="inline-block px-6 py-2 bg-orange-100 rounded-full text-orange-600 font-black text-xs uppercase tracking-[0.4em] mb-8">
+                    Est. 2026 • Premium Culinary Craft
+                </div>
+
+                <h1 class="text-7xl md:text-[10rem] font-black leading-[0.8] mb-12 text-gradient tracking-tighter">
+                    THRILL <br> <span class="playfair italic font-light lowercase">your</span> <br> PALATE
                 </h1>
-                <p class="text-xl text-brown-800/80 mb-12 max-w-lg font-light leading-relaxed">
-                    Crafting artisanal memories with the finest ingredients. No additives, no bromate—just pure culinary
-                    passion delivered to your doorstep.
-                </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="https://wa.me/2348028477776" class="btn-order">
-                        Start Your Order
+
+                <div class="relative max-w-2xl mx-auto mb-16">
+                    <p class="text-2xl text-brown-800/80 font-light leading-relaxed italic">
+                        "Where artisanal precision meets the spirit of Lagos. Every snack is a choreographed masterpiece
+                        of flavor."
+                    </p>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-24">
+                    <a href="https://wa.me/2348028477776" class="btn-order scale-110">
+                        Secure Your Order
                     </a>
                     <a href="#menu"
-                        class="px-8 py-5 rounded-full border-2 border-brown-900/10 font-bold hover:bg-white/50 transition flex items-center gap-2">
-                        View Collections
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
+                        class="group flex items-center gap-4 text-brown-900 font-black uppercase tracking-widest text-sm">
+                        <span class="w-12 h-[2px] bg-orange-600 group-hover:w-20 transition-all"></span>
+                        Explore Collections
                     </a>
                 </div>
             </div>
 
-            <div class="hero-image-frame animate-float">
-                <img src="C:/Users/user/.gemini/antigravity/brain/d463b650-db43-41aa-9ec4-8318c6ab4c3d/uploaded_media_1770214895116.jpg"
-                    class="w-full rounded-[40px] shadow-2xl relative z-10" alt="Norie Concept Logo">
+            <!-- Focus Hero Image -->
+            <div class="relative max-w-4xl mx-auto mt-12 group">
+                <div
+                    class="absolute -inset-4 bg-orange-600/20 rounded-[50px] blur-2xl opacity-0 group-hover:opacity-100 transition duration-700">
+                </div>
+                <div
+                    class="hero-image-frame overflow-hidden rounded-[50px] shadow-[0_50px_100px_-20px_rgba(45,27,13,0.3)]">
+                    <img src="assets/hero_cook.jpg"
+                        class="w-full transform group-hover:scale-105 transition duration-[2s] ease-out"
+                        alt="Cook & Bake with Nori">
+                </div>
+                <!-- Mini Floating Badge -->
+                <div
+                    class="absolute -top-10 -right-10 w-32 h-32 bg-[#FFF9F0] rounded-full shadow-2xl flex items-center justify-center p-4 transform rotate-12 animate-float">
+                    <p class="text-[10px] font-black text-center text-orange-600 leading-tight uppercase">Bromate Free
+                        <br> & <br> Handmade
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Cinematic Selection Slider (Single Row Marquee) -->
+    <section class="py-24 overflow-hidden bg-[#1A0F08] relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-orange-600/5 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-16 relative z-10 text-center">
+            <h4 class="text-orange-500 font-black uppercase tracking-[0.4em] mb-4">Selection Highlights</h4>
+            <h2 class="text-5xl md:text-8xl font-black text-white">Visual <span
+                    class="playfair italic font-light text-orange-500">Masterpieces</span></h2>
+        </div>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <!-- Original set of 17 images -->
+                <div class="slide-item"><img src="assets/slide_1.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_2.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_3.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_4.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_5.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_6.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_7.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_8.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_9.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_10.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_11.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_12.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_13.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_14.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_15.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_16.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_17.jpg" alt="Delicacy"></div>
+                <!-- Duplicate set for seamless infinite loop -->
+                <div class="slide-item"><img src="assets/slide_1.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_2.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_3.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_4.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_5.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_6.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_7.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_8.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_9.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_10.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_11.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_12.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_13.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_14.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_15.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_16.jpg" alt="Delicacy"></div>
+                <div class="slide-item"><img src="assets/slide_17.jpg" alt="Delicacy"></div>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center">
+            <p class="text-orange-500 font-bold tracking-[0.3em] uppercase text-xs animate-pulse">Drag or Scroll to see
+                more</p>
+        </div>
+    </section>
+
     <!-- About Section / Articles -->
-    <section id="about" class="py-32 px-6 bg-white/30">
+    <section id="about" class="py-32 px-6 bg-[#FAF3E0]/40">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Article 1 -->
@@ -286,8 +475,8 @@
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black mb-6">The Norie Philosophy</h3>
-                    <p class="text-brown-800/70 leading-relaxed">
+                    <h3 class="text-2xl font-black mb-6 text-orange-700">The Norie Philosophy</h3>
+                    <p class="text-brown-900 leading-relaxed font-black">
                         At Norie Concept, we believe food is more than just sustenance; it's an art form. Inspired by
                         the hand-drawn precision of our mascot—the chef's hat and rolling pin—we weave traditional
                         flavors with modern flair.
@@ -304,8 +493,8 @@
                             <path d="M16 10a4 4 0 0 1-8 0" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black mb-6">Signature Snacks</h3>
-                    <p class="text-brown-800/70 leading-relaxed">
+                    <h3 class="text-2xl font-black mb-6 text-orange-700">Signature Snacks</h3>
+                    <p class="text-brown-900 leading-relaxed font-black">
                         From golden-crisp fries to multi-layered club sandwiches, every snack is crafted with a secret
                         blend of spices. Whether on the go or settling in, you can taste the "Norie touch" in every
                         bite.
@@ -323,8 +512,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black mb-6">World-Class Catering</h3>
-                    <p class="text-brown-800/70 leading-relaxed">
+                    <h3 class="text-2xl font-black mb-6 text-orange-700">World-Class Catering</h3>
+                    <p class="text-brown-900 leading-relaxed font-black">
                         Our catering service brings the full Norie experience to your doorstep. We curate menus that
                         suit your event's rhythm, ensuring guests are wowed by both the presentation and the palate.
                     </p>
@@ -369,6 +558,167 @@
                         class="rounded-[30px] shadow-lg transform rotate-[-5deg]" alt="Handmade Bread">
                     <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
                         class="rounded-[30px] shadow-lg transform translate-y-12 rotate-[5deg]" alt="Gourmet Burger">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div>
+                    <h4 class="text-orange-600 font-black uppercase tracking-[0.3em] mb-4">Visual Feast</h4>
+                    <h2 class="text-5xl md:text-7xl font-black leading-tight">Crafted to <br><span
+                            class="text-orange-600">Perfection</span></h2>
+                </div>
+                <p class="text-xl text-brown-800/60 max-w-md font-light italic mb-2">
+                    "Every dish tells a story of passion, precision, and the finest ingredients we could source."
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card overflow-hidden group">
+                    <img src="assets/gallery1.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 1">
+                </div>
+                <div class="glass-card overflow-hidden group translate-y-12">
+                    <img src="assets/gallery2.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 2">
+                </div>
+                <div class="glass-card overflow-hidden group">
+                    <img src="assets/gallery3.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 3">
+                </div>
+                <div class="glass-card overflow-hidden group">
+                    <img src="assets/gallery4.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 4">
+                </div>
+                <div class="glass-card overflow-hidden group translate-y-12">
+                    <img src="assets/gallery5.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 5">
+                </div>
+                <div class="glass-card overflow-hidden group">
+                    <img src="assets/gallery6.jpg"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Gallery Image 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culinary Chronicles -->
+    <section class="py-32 px-6 overflow-hidden bg-orange-50/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-orange-200/50 rounded-full blur-3xl"></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="assets/gallery3.jpg" class="rounded-3xl shadow-2xl transform -rotate-3"
+                            alt="Story Image 1">
+                        <img src="assets/gallery4.jpg" class="rounded-3xl shadow-2xl translate-y-12 transform rotate-3"
+                            alt="Story Image 2">
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-orange-600 font-black uppercase tracking-[0.3em] mb-4">Behind the Flavors</h4>
+                    <h2 class="text-5xl font-black mb-8">The Master’s <span class="text-orange-600">Touch</span></h2>
+                    <div class="space-y-8">
+                        <div
+                            class="p-6 bg-white/50 rounded-2xl border-l-4 border-orange-600 hover:bg-white transition duration-300">
+                            <h3 class="text-xl font-black mb-2 text-orange-700">The Golden Samosa Secret</h3>
+                            <p class="text-brown-900 leading-relaxed italic font-black">
+                                "Inspired by the busy streets of Lagos and the finesse of French pastry, our samosas
+                                feature a 24-layer crust that stays crisp for hours. Each one is hand-pleated, ensuring
+                                the spiced beef filling remains succulent and aromatic."
+                            </p>
+                        </div>
+                        <div
+                            class="p-6 bg-white/50 rounded-2xl border-l-4 border-orange-400 hover:bg-white transition duration-300">
+                            <h3 class="text-xl font-black mb-2 text-orange-700">The Zobo Evolution</h3>
+                            <p class="text-brown-900 leading-relaxed italic font-black">
+                                "Our signature Zobo isn't just a drink; it's a botanical masterpiece. We slow-steep
+                                organic hibiscus petals with sun-dried ginger and a hint of wild honey, creating a
+                                profile that is complex, refreshing, and entirely additive-free."
+                            </p>
+                        </div>
+                        <div
+                            class="p-6 bg-white/50 rounded-2xl border-l-4 border-orange-800 hover:bg-white transition duration-300">
+                            <h3 class="text-xl font-black mb-2 text-orange-700">Artisanal Bread Mastery</h3>
+                            <p class="text-brown-900 leading-relaxed italic font-black">
+                                "Bromate-free and proud. Our loaves undergo a long fermentation process, resulting in a
+                                pillowy texture and a naturally sweet crust that defines the Norie Concept experience.
+                                It's the bread that brings families together."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Training Section -->
+    <section id="training" class="py-32 px-6 bg-orange-50/50 border-y border-orange-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex-1 order-2 lg:order-1">
+                <div
+                    class="inline-block px-4 py-2 bg-orange-700 text-white rounded-lg text-[10px] font-black uppercase tracking-widest mb-6 animate-pulse shadow-lg">
+                    Live Academy Now Open
+                </div>
+                <h2 class="text-5xl md:text-7xl font-black mb-8 leading-tight">Master the <span
+                        class="text-orange-600">Craft</span> With Us</h2>
+                <p class="text-xl text-orange-700 mb-10 leading-relaxed font-black">
+                    We don't just serve excellence; we teach it. Norie Concept now offers <strong>Professional Live
+                        Training</strong> for aspiring chefs and catering enthusiasts.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+                    <div class="flex items-start gap-4 p-4 bg-orange-50 rounded-2xl">
+                        <div
+                            class="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-sm uppercase">Pro Catering</h4>
+                            <p class="text-xs text-brown-800/60">Scale your events with mastery.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-orange-50 rounded-2xl">
+                        <div
+                            class="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center shrink-0">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 2L2 12s-4-6-4-8a4 4 0 118 0c0 2-4 8-4 8z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-sm uppercase">Artisan Baking</h4>
+                            <p class="text-xs text-brown-800/60">The science of perfect dough.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://wa.me/2348028477776" class="btn-order">
+                    Join Our Live Training
+                </a>
+            </div>
+            <div class="flex-1 order-1 lg:order-2 relative">
+                <div class="absolute inset-0 bg-orange-600/10 rounded-[60px] blur-3xl"></div>
+                <!-- Image showing a learning/teaching environment or professional spread -->
+                <img src="assets/gallery6.jpg" class="relative z-10 rounded-[60px] shadow-2xl border-8 border-white"
+                    alt="Live Professional Training">
+                <div
+                    class="absolute -bottom-6 -right-6 bg-[#FAF3E0] p-6 rounded-3xl shadow-xl z-20 max-w-[200px] border border-orange-100">
+                    <p class="text-[10px] font-black text-orange-600 uppercase mb-2">Expert Led Sessions</p>
+                    <p class="text-xs font-medium text-brown-800 italic">"Turning passion into professional success."
+                    </p>
                 </div>
             </div>
         </div>
@@ -438,6 +788,152 @@
         </div>
     </section>
 
+    <!-- Catering Packages -->
+    <section id="catering" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h4 class="text-orange-600 font-black uppercase tracking-[0.3em] mb-4">Event Excellence</h4>
+                <h2 class="text-5xl md:text-7xl font-black">Catering <span class="text-orange-600">Packages</span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 border-t-8 border-orange-400">
+                    <h3 class="text-2xl font-black mb-4">The Intimate Soirée</h3>
+                    <p class="text-brown-800/60 mb-6 font-light">Perfect for small gatherings and private dinners.
+                        (Up
+                        to 20 Guests)</p>
+                    <ul class="space-y-3 mb-10 text-sm font-bold text-brown-900">
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> 3 Signature Appetizers</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> 2 Gourmet Main Courses</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> Premium Zobo Service</li>
+                    </ul>
+                    <a href="https://wa.me/2348028477776"
+                        class="block text-center py-4 rounded-xl bg-brown-900 text-white font-black hover:bg-orange-600 transition">Enquire
+                        Now</a>
+                </div>
+                <div
+                    class="glass-card p-10 border-t-8 border-orange-600 scale-105 shadow-2xl relative z-10 bg-orange-50/80">
+                    <div
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 bg-orange-600 text-white px-6 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                        Most Popular</div>
+                    <h3 class="text-2xl font-black mb-4 text-orange-600">The Corporate Gala</h3>
+                    <p class="text-brown-800/60 mb-6 font-light">Elevate your office culture with premium catering.
+                        (50-100 Guests)</p>
+                    <ul class="space-y-3 mb-10 text-sm font-bold text-brown-900">
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> 5 Signature Appetizers</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> 4 Main Course Varieties</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> Full Drink Bar & Staff</li>
+                    </ul>
+                    <a href="https://wa.me/2348028477776" class="btn-order w-full text-center inline-block">Book the
+                        Gala</a>
+                </div>
+                <div class="glass-card p-10 border-t-8 border-orange-800">
+                    <h3 class="text-2xl font-black mb-4">The Grand Celebration</h3>
+                    <p class="text-brown-800/60 mb-6 font-light">For weddings and major industry events. (200+
+                        Guests)
+                    </p>
+                    <ul class="space-y-3 mb-10 text-sm font-bold text-brown-900">
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> Bespoke Menu Design</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> On-site Live Cooking</li>
+                        <li class="flex items-center gap-2"><svg class="text-orange-600" width="16" height="16"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                            </svg> Signature Dessert Station</li>
+                    </ul>
+                    <a href="https://wa.me/2348028477776"
+                        class="block text-center py-4 rounded-xl bg-brown-900 text-white font-black hover:bg-orange-600 transition">Consult
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-32 bg-[#FAF3E0]/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-black mb-20 text-center">What Our <span
+                    class="text-orange-600 italic playfair">Connoisseurs</span> Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div
+                    class="bg-[#FFF9F0] p-12 rounded-[40px] shadow-xl border border-orange-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 mb-6">
+                            <span class="text-orange-500">★★★★★</span>
+                        </div>
+                        <p class="text-2xl font-light italic text-brown-900 leading-relaxed mb-8">
+                            "The attention to detail in every bite is extraordinary. Their Zobo is hands down the
+                            best
+                            premium drink in Lagos!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 bg-orange-200 rounded-full flex items-center justify-center font-black text-orange-600">
+                            AO</div>
+                        <div>
+                            <p class="font-black text-brown-900 leading-none">Adebayo O.</p>
+                            <p class="text-sm text-brown-800/50">Tech Lead, Victoria Island</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#FFF9F0] p-12 rounded-[40px] shadow-xl border border-orange-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 mb-6">
+                            <span class="text-orange-500">★★★★★</span>
+                        </div>
+                        <p class="text-2xl font-light italic text-brown-900 leading-relaxed mb-8">
+                            "Norie catered our daughter's wedding and people are still talking about the platters.
+                            Professional, timely, and delicious."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 bg-orange-200 rounded-full flex items-center justify-center font-black text-orange-600">
+                            SN</div>
+                        <div>
+                            <p class="font-black text-brown-900 leading-none">Sarah N.</p>
+                            <p class="text-sm text-brown-800/50">Event Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="bg-[#2D1B0D] text-white pt-20 pb-10 px-6 border-t border-white/10">
         <div class="max-w-7xl mx-auto">
@@ -445,7 +941,8 @@
                 <div class="max-w-md">
                     <h2 class="text-4xl font-black mb-6">NORIE CONCEPT</h2>
                     <p class="text-white/60 mb-8 font-light leading-relaxed">
-                        Elevating the culinary landscape of Lagos with passion and precision. Every order is a promise
+                        Elevating the culinary landscape of Lagos with passion and precision. Every order is a
+                        promise
                         of quality.
                     </p>
                     <div class="flex gap-4">
@@ -470,6 +967,7 @@
                         <p class="text-orange-500 mb-6">Explore</p>
                         <a href="#about" class="block hover:text-orange-500 transition">Our Story</a>
                         <a href="#menu" class="block hover:text-orange-500 transition">Signature Menu</a>
+                        <a href="#training" class="block hover:text-orange-500 transition">Norie Academy</a>
                         <a href="#catering" class="block hover:text-orange-500 transition">Catering Service</a>
                     </div>
                     <div class="space-y-4">
@@ -492,48 +990,6 @@
     </footer>
 
     <script>
-        // --- Live Moving Background Logic ---
-        const bg = document.getElementById('parallax-bg');
-        const iconPaths = [
-            'M3,7 L21,7 L21,17 C21,19.209 19.209,21 17,21 L7,21 C4.79,21 3,19.209 3,17 L3,7 Z M5,7 L5,5 C5,3.895 5.895,3 7,3 L17,3 C18.105,3 19,3.895 19,5 L19,7', // Fries
-            'M12,2 C17.522,2 22,6.478 22,12 C22,17.522 17.522,22 12,22 C6.478,22 2,17.522 2,12 C2,6.478 6.478,2 12,2 Z', // Burger
-            'M18,3 L6,3 L6,21 L18,21 L18,3 Z M12,18 C13.104,18 14,17.104 14,16 C14,14.896 13.104,14 12,14 C10.896,14 10,14.896 10,16 C10,17.104 10.896,18 12,18 Z', // Drink
-            'M2,12 L22,12 M12,2 L12,22', // Cross
-        ];
-
-        // Create random floating icons
-        for (let i = 0; i < 25; i++) {
-            const icon = document.createElement('div');
-            icon.className = 'food-icon';
-            const size = Math.random() * 100 + 50;
-            icon.style.width = size + 'px';
-            icon.style.height = size + 'px';
-            icon.style.left = Math.random() * 100 + '%';
-            icon.style.top = Math.random() * 100 + '%';
-
-            // Random simple SVG
-            icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5"><path d="${iconPaths[Math.floor(Math.random() * iconPaths.length)]}"/></svg>`;
-
-            bg.appendChild(icon);
-
-            // Initial random transform
-            icon.dataset.speed = (Math.random() * 0.05) + 0.02;
-            icon.style.transform = `translate(0, 0) rotate(${Math.random() * 360}deg)`;
-        }
-
-        // Parallax Movement
-        window.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-
-            document.querySelectorAll('.food-icon').forEach(icon => {
-                const speed = icon.dataset.speed;
-                const moveX = (window.innerWidth / 2 - x) * speed;
-                const moveY = (window.innerHeight / 2 - y) * speed;
-                icon.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${moveX}deg)`;
-            });
-        });
-
         // Scroll Observer for slide-up effects
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -547,6 +1003,13 @@
         document.querySelectorAll('.glass-card').forEach(el => {
             el.style.opacity = 0;
             observer.observe(el);
+        });
+
+        // Parallax scroll effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const bg = document.getElementById('parallax-bg');
+            bg.style.backgroundPositionY = -(scrolled * 0.15) + 'px';
         });
     </script>
 </body>
