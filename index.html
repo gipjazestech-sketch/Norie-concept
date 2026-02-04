@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#F9F1E2">
     <title>Norie Concept | Premium Snacks, Drinks & Catering</title>
     <meta name="description"
         content="Norie Concept offers a premium gourmet experience with handcrafted snacks, refreshing drinks, and world-class catering services.">
@@ -41,6 +45,9 @@
             color: var(--text-dark);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            min-height: 100vh;
+            min-height: 100dvh;
+            /* Mobile maximize fix */
         }
 
         h1,
@@ -318,6 +325,10 @@
         .slide-item:hover {
             border-color: var(--primary);
         }
+
+        .safe-nav {
+            padding-top: max(1.5rem, env(safe-area-inset-top));
+        }
     </style>
 </head>
 
@@ -329,7 +340,7 @@
 
     <!-- Navigation -->
     <nav
-        class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-[#F9F1E2]/60 backdrop-blur-xl border-b border-orange-100/30">
+        class="fixed top-0 w-full z-50 px-8 pb-6 safe-nav flex justify-between items-center bg-[#F9F1E2]/60 backdrop-blur-xl border-b border-orange-100/30">
         <div class="flex items-center gap-2">
             <span class="text-2xl font-black tracking-tighter text-orange-600">NORIE</span>
             <span class="text-2xl font-light text-brown-800">CONCEPT</span>
