@@ -4,230 +4,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norie Concepts | Premium Snacks, Natural Drinks & Catering</title>
+    <title>Norie Concepts | Premium Gourmet Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cocoa: #3E2723;
+            --tangerine: #E65100;
+            --amber: #FFB300;
+        }
 
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Norie Concepts: The ultimate plug for premium small chops, gourmet bread, custom cakes, and 100% natural drinks like Zobo and Kunu. Order fresh daily in Lagos.">
-    <meta name="keywords"
-        content="Small Chops Lagos, Gourmet Bread, Zobo Drink, Kunu, Catering Services Nigeria, Norie Concepts, Cooking Lessons">
-    <meta name="author" content="Norie Concepts">
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--cocoa);
+            color: white;
+            margin: 0;
+        }
 
-    <!-- OpenGraph Social Tags (How it looks on WhatsApp/Socials) -->
-    <meta property="og:title" content="Norie Concepts | Snacks • Drinks • Catering">
-    <meta property="og:description"
-        content="Freshly baked bread, crispy small chops, and natural drinks delivered to your door.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://norieconcepts.com">
-    <!-- Image for sharing -->
-    <meta property="og:image" content="assets/share-image.jpg">
-    </path>
-    </svg>
-    <span id="cart-count"
-        class="absolute -top-3 -right-3 bg-orange-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border-2 border-[#3E2723]">0</span>
-    </div>
-    </div>
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
 
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar"
-        class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-[60] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-        <div class="p-6 border-b flex justify-between items-center bg-orange-50">
-            <h3 class="text-2xl font-bold accent-orange">Your Order</h3>
-            <button id="close-cart" class="text-gray-500 hover:text-black">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+        .hero-vibrant {
+            background: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-orange {
+            background-color: var(--tangerine);
+        }
+
+        .section-amber {
+            background-color: var(--amber);
+            color: var(--cocoa);
+        }
+
+        .food-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .food-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--amber);
+        }
+
+        .btn-glow {
+            background: linear-gradient(90deg, #FFB300, #E65100);
+            box-shadow: 0 0 30px rgba(230, 81, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(230, 81, 0, 0.8);
+        }
+
+        .marquee-text {
+            font-size: 8rem;
+            font-weight: 900;
+            opacity: 0.05;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <img src="assets/logo.jpg" class="w-12 h-12 rounded-full border-2 border-orange-500 shadow-2xl">
+            <span class="text-2xl font-black tracking-tighter italic uppercase">Norie <span
+                    class="text-orange-500">Concepts</span></span>
         </div>
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <!-- Items populated by JS -->
-            <p class="text-gray-400 text-center py-20 italic">Your kitchen is currently empty...</p>
+        <div class="hidden md:flex gap-10 font-bold uppercase text-xs tracking-[4px]">
+            <a href="#menu" class="hover:text-amber-400 underline-offset-8">Menu</a>
+            <a href="#catering" class="hover:text-amber-400">Services</a>
+            <a href="#gallery" class="hover:text-amber-400">Lookbook</a>
         </div>
-        <div class="p-6 border-t bg-gray-50">
-            <div class="flex justify-between text-xl font-bold mb-6">
-                <span>Total</span>
-                <span id="cart-total">₦0</span>
-            </div>
-            <button id="checkout-btn" class="w-full btn-premium text-white py-4 rounded-xl text-lg font-bold">Check out
-                via WhatsApp</button>
-        </div>
-    </div>
+        <button class="btn-glow px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest">Order Now</button>
+    </nav>
 
-    <!-- FOMO Notification -->
-    <div id="fomo-toast"
-        class="fixed bottom-8 left-8 z-50 bg-white p-4 rounded-2xl shadow-xl border border-orange-100 transform -translate-x-full transition-transform duration-500 flex items-center gap-4">
-        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-xl">🔥</div>
-        <div>
-            <p id="fomo-text" class="text-sm font-medium text-gray-800">Someone just ordered Small Chops!</p>
-            <p class="text-xs text-gray-400">2 minutes ago</p>
-        </div>
-    </div>
-
-    <!-- Social Media Footer -->
-    <footer class="bg-white border-t border-gray-100 pt-24 pb-12 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="text-2xl font-bold accent-orange uppercase tracking-widest">Norie</span>
-                    <span class="text-2xl font-light">Concepts</span>
+    <!-- Hero Section -->
+    <section class="hero-vibrant min-h-screen flex flex-col justify-center items-center text-center p-6 pt-24">
+        <div class="marquee-text top-40 left-0 whitespace-nowrap">PREMIUM • SNACKS • PREMIUM • SNACKS</div>
+        <div class="z-10">
+            <div class="mb-10 animate-float">
+                <div
+                    class="w-64 h-64 md:w-96 md:h-96 border-[15px] border-orange-600 rounded-full overflow-hidden shadow-[0_0_100px_rgba(230,81,0,0.4)] mx-auto">
+                    <img src="assets/mascot.jpg" class="w-full h-full object-cover">
                 </div>
-                <p class="text-gray-500 max-w-sm mb-6 leading-relaxed">The ultimate plug for premium snacks, natural
-                    drinks, and professional catering. Transforming every meal into a celebration.</p>
-                <div class="flex gap-4">
-                    <!-- Social Icons (Placeholders) -->
-                    <div
-                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
-                        IG</div>
-                    <div
-                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
-                        FB</div>
-                    <div
-                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
-                        TK</div>
-                </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-6">Explore</h4>
-                <ul class="space-y-4 text-gray-500 font-medium">
-                    <li><a href="#" class="hover:text-orange-600">Home</a></li>
-                    <li><a href="#menu" class="hover:text-orange-600">Our Menu</a></li>
-                    <li><a href="#" class="hover:text-orange-600">Cooking Lessons</a></li>
-                    <li><a href="#" class="hover:text-orange-600">Catering Inquiry</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-6">Contact Us</h4>
-                <ul class="space-y-4 text-gray-500 font-medium">
-                    <li>+234 (0) 802 847 7776</li>
-                    <li>Lagos, Nigeria</li>
-                    <li>order@norieconcepts.com</li>
-                </ul>
+            <h1 class="text-6xl md:text-[150px] font-black leading-[0.85] tracking-tighter italic mb-8">
+                MORE THAN <br><span class="text-transparent" style="-webkit-text-stroke: 2px #E65100;">JUST
+                    TASTE.</span>
+            </h1>
+            <p class="text-xl md:text-3xl text-orange-100/60 max-w-3xl mx-auto mb-12 font-medium">
+                The ultimate plug for premium small chops, bread, and natural drinks in Lagos.
+            </p>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <a href="#menu" class="btn-glow px-16 py-6 rounded-full text-2xl font-black italic">GET FED NOW</a>
+                <a href="https://wa.me/2348028477776"
+                    class="px-16 py-6 border-2 border-white/20 rounded-full text-2xl font-black hover:bg-white/10 transition italic">CATERING</a>
             </div>
         </div>
+    </section>
+
+    <!-- Menu Section (Vibrant Orange) -->
+    <section id="menu" class="section-orange py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-7xl md:text-[120px] font-black text-cocoa leading-none mb-24 italic">THE <span
+                    class="text-white">PLUG.</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Bread Card -->
+                <div class="food-card p-4 scroll-reveal group cursor-pointer" onclick="openModal('bread')">
+                    <div class="h-[450px] rounded-[30px] overflow-hidden mb-8 shadow-2xl relative">
+                        <img src="assets/bread.jpg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span
+                                class="text-white font-black text-xl border-2 border-white px-8 py-3 rounded-full">QUICK
+                                VIEW</span>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-5xl font-black italic uppercase">Bread</h3>
+                            <span class="bg-white/10 px-4 py-1 rounded-full text-xs font-black uppercase">Top
+                                Plug</span>
+                        </div>
+                        <p class="text-orange-100/70 text-lg mb-8 leading-relaxed">Golden-crusted, pillowy soft loaves
+                            baked with butter and premium yeast. Bromate Free.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-black text-amber-400">₦1,200</span>
+                            <button onclick="event.stopPropagation(); addToCart('bread')"
+                                class="bg-white text-orange-600 p-4 rounded-2xl font-black text-xl hover:bg-amber-400 transition animate-pulse">ADD
+                                +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chops Card -->
+                <div class="food-card p-4 scroll-reveal group cursor-pointer" onclick="openModal('chops')"
+                    style="transition-delay: 0.2s;">
+                    <div class="h-[450px] rounded-[30px] overflow-hidden mb-8 shadow-2xl relative">
+                        <img src="assets/chops.jpg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span
+                                class="text-white font-black text-xl border-2 border-white px-8 py-3 rounded-full">QUICK
+                                VIEW</span>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-5xl font-black italic uppercase">Chops</h3>
+                            <span
+                                class="bg-amber-400 text-cocoa px-4 py-1 rounded-full text-xs font-black uppercase">Hot
+                                Box</span>
+                        </div>
+                        <p class="text-orange-100/70 text-lg mb-8 leading-relaxed">Samosas, Spring Rolls, Peppered meat
+                            & our legendary Puff-puff. Perfect for events.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-black text-amber-400">₦2,500</span>
+                            <button onclick="event.stopPropagation(); addToCart('chops')"
+                                class="bg-white text-orange-600 p-4 rounded-2xl font-black text-xl hover:bg-amber-400 transition animate-pulse">ADD
+                                +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zobo Card -->
+                <div class="food-card p-4 scroll-reveal group cursor-pointer" onclick="openModal('zobo')"
+                    style="transition-delay: 0.4s;">
+                    <div class="h-[450px] rounded-[30px] overflow-hidden mb-8 shadow-2xl relative">
+                        <img src="assets/zobo.jpg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span
+                                class="text-white font-black text-xl border-2 border-white px-8 py-3 rounded-full">QUICK
+                                VIEW</span>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-5xl font-black italic uppercase">Zobo</h3>
+                            <span
+                                class="bg-green-500 text-white px-4 py-1 rounded-full text-xs font-black uppercase">100%
+                                Nat.</span>
+                        </div>
+                        <p class="text-orange-100/70 text-lg mb-8 leading-relaxed">Organic hibiscus infused with ginger,
+                            cloves & fresh mint leaf. Pure refreshment.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-black text-amber-400">₦800</span>
+                            <button onclick="event.stopPropagation(); addToCart('zobo')"
+                                class="bg-white text-orange-600 p-4 rounded-2xl font-black text-xl hover:bg-amber-400 transition animate-pulse">ADD
+                                +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[300] hidden flex items-center justify-center p-6">
+        <div class="absolute inset-0 bg-cocoa/90 backdrop-blur-3xl" onclick="closeModal()"></div>
         <div
-            class="max-w-7xl mx-auto pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-sm font-medium text-gray-400 gap-4">
-            <p>© 2026 Norie Concepts Limited. All Rights Reserved.</p>
-            <div class="flex gap-8">
-                <a href="#" class="hover:text-gray-600">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-600">Terms of Service</a>
+            class="bg-orange-600 max-w-4xl w-full rounded-[60px] relative z-10 overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] flex flex-col md:flex-row">
+            <div class="md:w-1/2 h-[400px] md:h-auto">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-12 flex flex-col justify-center">
+                <button onclick="closeModal()"
+                    class="absolute top-8 right-8 text-white/50 text-4xl hover:text-white transition">×</button>
+                <h3 id="modal-title" class="text-6xl font-black italic mb-4 uppercase"></h3>
+                <p id="modal-desc" class="text-xl text-orange-100/80 mb-8 leading-relaxed"></p>
+                <div class="space-y-4 mb-10">
+                    <p class="flex items-center gap-4 text-amber-400 font-black"><span class="text-2xl">🌿</span> 100%
+                        HEALTHY INGREDIENTS</p>
+                    <p class="flex items-center gap-4 text-amber-400 font-black"><span class="text-2xl">⚡</span> FRESHLY
+                        BAKED DAILY</p>
+                </div>
+                <button id="modal-add-btn"
+                    class="bg-cocoa text-white py-6 rounded-3xl text-2xl font-black shadow-2xl hover:scale-105 transition italic">ADD
+                    TO BASKET</button>
             </div>
         </div>
+    </div>
+
+
+    <!-- Services (Amber Gold) -->
+    <section id="catering" class="section-amber py-40 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+            <div class="md:w-1/2 scroll-reveal">
+                <h2 class="text-8xl md:text-[140px] font-black italic leading-[0.8] mb-12">EVENTS <br><span
+                        class="text-white" style="-webkit-text-stroke: 4px #3E2723;">DONE RIGHT.</span></h2>
+                <div class="space-y-6 mb-12">
+                    <p class="text-3xl font-bold flex gap-4 items-center">🔥 <span>Weddings & Parties</span></p>
+                    <p class="text-3xl font-bold flex gap-4 items-center">🔥 <span>Corporate Seminar Platters</span></p>
+                    <p class="text-3xl font-bold flex gap-4 items-center">🔥 <span>Private Home Delivery</span></p>
+                </div>
+                <button
+                    class="bg-cocoa text-white px-16 py-6 rounded-full text-2xl font-black shadow-2xl skew-x-[-10deg]">BOOK
+                    CATERING</button>
+            </div>
+            <div class="md:w-1/2 relative scroll-reveal">
+                <div
+                    class="rounded-[80px] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.4)] border-[15px] border-white rotate-3 hover:rotate-0 transition duration-500">
+                    <img src="assets/platter.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery (Electric Dark) -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 scroll-reveal">
+                <h2 class="text-7xl md:text-9xl font-black italic"
+                    style="-webkit-text-stroke: 1px rgba(255,255,255,0.1); color: transparent;">THE LOOKBOOK</h2>
+                <h2 class="text-5xl md:text-8xl font-black italic -mt-20 relative z-10 text-white">VISUAL <span
+                        class="text-orange-500">PROOF.</span></h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 scroll-reveal">
+                <img src="assets/gallery1.jpg"
+                    class="rounded-[40px] shadow-2xl border border-white/10 hover:border-amber-400 transition">
+                <img src="assets/gallery2.jpg"
+                    class="rounded-[40px] shadow-2xl border border-white/10 hover:border-amber-400 transition mt-12">
+                <img src="assets/gallery3.jpg"
+                    class="rounded-[40px] shadow-2xl border border-white/10 hover:border-amber-400 transition">
+                <img src="assets/gallery4.jpg"
+                    class="rounded-[40px] shadow-2xl border border-white/10 hover:border-amber-400 transition mt-12">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-orange-600 py-24 px-6 text-center">
+        <h2 class="text-4xl md:text-6xl font-black italic mb-12">Stay Connected with Norie.</h2>
+        <div class="flex justify-center gap-10 mb-16">
+            <span class="text-2xl font-bold">IG</span>
+            <span class="text-2xl font-bold">FB</span>
+            <span class="text-2xl font-bold">WA</span>
+        </div>
+        <p class="text-cocoa font-black text-xl">© 2026 Norie Concepts Limited. No additives, No Bromate. Just Love.</p>
     </footer>
 
     <script>
-        const cart = [];
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
         const menuItems = {
-            'bread': { name: 'Gourmet Bread', price: 1200 },
-            'zobo': { name: 'Premium Zobo', price: 800 },
-            'chops': { name: 'Small Chops Box', price: 2500 }
+            'bread': { name: 'Gourmet Bread', price: 1200, desc: 'Golden-crusted, pillowy soft loaves baked with butter and premium yeast. 100% Bromate-free and natural.', img: 'assets/bread.jpg' },
+            'zobo': { name: 'Premium Zobo', price: 800, desc: 'Organic hibiscus infused with ginger, cloves & fresh mint leaf. Pure nourishment and refreshing.', img: 'assets/zobo.jpg' },
+            'chops': { name: 'Small Chops Box', price: 2500, desc: 'Samosas, Spring Rolls, Peppered meat & our legendary Puff-puff. The perfect variety for your cravings.', img: 'assets/chops.jpg' }
         };
 
-        function updateCart() {
-            const itemsList = document.getElementById('cart-items');
-            const totalEl = document.getElementById('cart-total');
-            const countEl = document.getElementById('cart-count');
-            const trigger = document.getElementById('cart-trigger');
+        function openModal(id) {
+            const item = menuItems[id];
+            document.getElementById('modal-title').innerText = item.name;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('modal-img').src = item.img;
+            document.getElementById('modal-add-btn').onclick = () => { addToCart(id); closeModal(); };
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
 
-            if (cart.length === 0) {
-                itemsList.innerHTML = '<p class="text-gray-400 text-center py-20 italic">Your kitchen is currently empty...</p>';
-                totalEl.innerText = '₦0';
-                countEl.innerText = '0';
-                trigger.classList.add('hidden');
-                return;
-            }
-
-            trigger.classList.remove('hidden');
-            let total = 0;
-            itemsList.innerHTML = cart.map((item, index) => {
-                total += item.price * item.qty;
-                return `
-                    <div class="flex justify-between items-center p-4 bg-orange-50 rounded-2xl">
-                        <div>
-                            <h4 class="font-bold">${item.name}</h4>
-                            <p class="text-sm text-gray-500">₦${item.price} x ${item.qty}</p>
-                        </div>
-                        <button onclick="removeFromCart(${index})" class="text-red-500 text-xs font-bold uppercase">Remove</button>
-                    </div>
-                `;
-            }).join('');
-
-            totalEl.innerText = `₦${total.toLocaleString()}`;
-            countEl.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
         }
 
         function addToCart(id) {
-            const product = menuItems[id];
-            const existing = cart.find(item => item.name === product.name);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
-            updateCart();
-            document.getElementById('cart-sidebar').classList.remove('translate-x-full');
+            const item = menuItems[id];
+            alert(item.name.toUpperCase() + " added to your order! Checking out via WhatsApp...");
+            const message = encodeURIComponent(`Hi Norie! I'd like to order: ${item.name} (₦${item.price.toLocaleString()})`);
+            window.open(`https://wa.me/2348028477776?text=${message}`);
         }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        document.getElementById('cart-trigger').onclick = () => {
-            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
-        };
-
-        document.getElementById('close-cart').onclick = () => {
-            document.getElementById('cart-sidebar').classList.add('translate-x-full');
-        };
-
-        document.getElementById('checkout-btn').onclick = () => {
-            let message = "Hi Norie Concepts! I'd like to place an order: \n\n";
-            let total = 0;
-            cart.forEach(item => {
-                message += `- ${item.qty}x ${item.name} (₦${(item.price * item.qty).toLocaleString()})\n`;
-                total += item.price * item.qty;
-            });
-            message += `\nTotal: ₦${total.toLocaleString()}\n\nDelivery Location: [Please enter your address]`;
-
-            const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/2348028477776?text=${encoded}`);
-        };
-
-        // FOMO Notifications
-        const fomoMessages = [
-            "Sarah just ordered a Party Platter XL!",
-            "David just bought 10 bottles of Zobo!",
-            "Someone in Ikeja ordered Gourmet Bread!",
-            "A wedding inquiry just arrived for Saturday!"
-        ];
-
-        function showFomo() {
-            const toast = document.getElementById('fomo-toast');
-            const text = document.getElementById('fomo-text');
-            text.innerText = fomoMessages[Math.floor(Math.random() * fomoMessages.length)];
-
-            toast.classList.remove('-translate-x-full');
-            setTimeout(() => {
-                toast.classList.add('-translate-x-full');
-            }, 4000);
-        }
-
-        // Add event listeners to "Add to Cart" buttons
-        document.querySelectorAll('a[href*="Order:"]').forEach(btn => {
-            btn.onclick = (e) => {
-                e.preventDefault();
-                const url = btn.getAttribute('href');
-                if (url.includes('Bread')) addToCart('bread');
-                if (url.includes('Zobo')) addToCart('zobo');
-                if (url.includes('Chops')) addToCart('chops');
-            };
-        });
-
-        // Initialize FOMO
-        setInterval(showFomo, 15000);
-        setTimeout(showFomo, 5000);
     </script>
-    </body>
+</body>
 
 </html>
