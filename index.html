@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norie Concepts | Premium Snacks & Catering</title>
+    <title>Norie Concepts | Cook & Bake with Nori</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&family=Grand+Hotel&display=swap"
         rel="stylesheet">
     <style>
         :root {
+            --nori-pink: #FF80AB;
             --nori-orange: #FF5722;
-            --nori-gold: #FFB300;
-            --nori-cream: #FFF8F0;
+            --nori-yellow: #FFD54F;
             --nori-brown: #4E342E;
         }
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--nori-cream);
+            background-color: #ffffff;
             color: var(--nori-brown);
             margin: 0;
         }
@@ -30,42 +30,72 @@
             font-family: 'Playfair Display', serif;
         }
 
-        .hero-sunshine {
-            background: radial-gradient(circle at top right, #FFFDE7 0%, #FFF8F0 100%);
+        .handwritten {
+            font-family: 'Grand Hotel', cursive;
         }
 
-        .btn-nori {
-            background: linear-gradient(135deg, var(--nori-orange) 0%, #FF8A65 100%);
+        .btn-order {
+            background: linear-gradient(135deg, #FF5252 0%, #FF8A65 100%);
             color: white;
-            padding: 1.25rem 3rem;
-            border-radius: 20px;
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
             font-weight: 800;
-            transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(255, 82, 82, 0.4);
+            display: inline-block;
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-nori:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 87, 34, 0.5);
+        .btn-order:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 82, 82, 0.6);
+            filter: brightness(1.1);
         }
 
-        .food-card-white {
-            background: white;
-            border-radius: 40px;
+        .hero-section {
+            background-color: #fff;
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .mascot-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
+            /* Remove the border from previous designs as requested */
+        }
+
+        .food-card {
+            background: #ffffff;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(78, 52, 46, 0.05);
-            transition: 0.4s;
-            border: 1px solid rgba(255, 179, 0, 0.1);
+            border: 1px solid #f0f0f0;
+            transition: 0.3s;
         }
 
-        .food-card-white:hover {
-            transform: scale(1.03);
-            box-shadow: 0 30px 60px rgba(78, 52, 46, 0.1);
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--nori-brown);
+            margin-bottom: 2rem;
+            line-height: 1;
         }
 
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: 0.8s ease-out;
         }
 
@@ -73,211 +103,127 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        .floating-badge {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(2deg);
-            }
-
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto absolute top-0 left-0 right-0 z-50">
-        <img src="assets/main_logo.jpg" class="w-16 h-16 rounded-2xl shadow-xl" alt="Norie Logo">
-        <div class="hidden md:flex gap-10 font-bold uppercase text-xs tracking-[3px] text-nori-brown">
-            <a href="#menu" class="hover:text-orange-600 transition">Menu</a>
-            <a href="#about" class="hover:text-orange-600 transition">About</a>
-            <a href="#contact" class="hover:text-orange-600 transition">Contact</a>
-        </div>
-        <button
-            class="bg-nori-brown text-white px-8 py-3 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg">Order
-            Now</button>
-    </nav>
 
-    <!-- Professional Hero Section -->
-    <section
-        class="hero-sunshine min-h-screen flex flex-col md:flex-row items-center justify-center p-6 pt-32 gap-12 overflow-hidden">
-        <div class="md:w-1/2 max-w-2xl scroll-reveal">
-            <img src="assets/main_logo.jpg" class="w-40 mb-8 rounded-3xl shadow-2xl" alt="Brand Logo">
-            <h1 class="text-6xl md:text-[100px] leading-[0.9] font-black text-nori-brown mb-8 tracking-tighter">
-                Cook & Bake <br><span class="text-orange-600">Pure Love.</span>
-            </h1>
-            <p class="text-2xl text-gray-600 mb-12 leading-relaxed font-medium">
-                Deliciously artisanal snacks, refreshing natural drinks, and premium event catering. Experience the
-                magic of Norie.
-            </p>
-            <div class="flex flex-wrap gap-6">
-                <a href="#menu" class="btn-nori text-xl">Order via WhatsApp</a>
-                <a href="https://wa.me/2348028477776"
-                    class="px-10 py-5 border-2 border-nori-brown text-nori-brown rounded-[20px] font-black text-xl hover:bg-nori-brown hover:text-white transition">Inquire
-                    Catering</a>
+    <!-- Hero Mascot (Beginning of Page) -->
+    <section class="hero-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <img src="assets/hero_mascot.jpg" class="mascot-image scroll-reveal active" alt="Cook & Bake with Nori">
+
+            <div class="mt-12 mb-20 scroll-reveal active">
+                <h1 class="handwritten text-5xl text-orange-500 mb-4">Welcome to</h1>
+                <h2 class="section-title">NORIE CONCEPTS</h2>
+                <div class="flex justify-center mt-10">
+                    <a href="https://wa.me/2348028477776?text=Hi%20Norie!%20I'd%20like%20to%20place%20an%20order."
+                        class="btn-order">PLACE YOUR ORDER NOW</a>
+                </div>
             </div>
-        </div>
-        <div class="md:w-1/2 relative scroll-reveal">
-            <div class="relative z-10 floating-badge">
-                <img src="assets/hero_mascot.jpg"
-                    class="w-full max-w-[700px] rounded-[60px] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-[15px] border-white"
-                    alt="Cook & Bake with Nori Mascot">
-            </div>
-            <!-- Decorative Elements -->
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-10 -left-20 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl"></div>
         </div>
     </section>
 
-    <!-- The "Plug" Section (Refined) -->
-    <section class="bg-white py-24 px-6">
-        <div
-            class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 border-y-2 border-orange-50 py-12">
+    <!-- Services Banner -->
+    <div class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             <div class="scroll-reveal">
-                <h3 class="text-4xl font-black mb-2 accent-orange uppercase italic">Your Premium Plug</h3>
-                <p class="text-xl text-gray-400 font-medium tracking-widest uppercase">Snacks • Drinks • Catering</p>
+                <span class="text-5xl block mb-4">🍩</span>
+                <h4 class="text-xl font-bold uppercase tracking-widest">Premium Snacks</h4>
             </div>
-            <div class="flex gap-6 scroll-reveal">
-                <div class="p-8 bg-nori-cream rounded-3xl text-center border border-orange-100">
-                    <span class="text-4xl">🍞</span>
-                    <p class="mt-2 font-bold uppercase text-xs">Fresh Bakery</p>
-                </div>
-                <div class="p-8 bg-nori-cream rounded-3xl text-center border border-orange-100">
-                    <span class="text-4xl">🍹</span>
-                    <p class="mt-2 font-bold uppercase text-xs">Natural Drinks</p>
-                </div>
-                <div class="p-8 bg-nori-cream rounded-3xl text-center border border-orange-100">
-                    <span class="text-4xl">🍤</span>
-                    <p class="mt-2 font-bold uppercase text-xs">Small Chops</p>
-                </div>
+            <div class="scroll-reveal" style="transition-delay: 0.2s;">
+                <span class="text-5xl block mb-4">🥤</span>
+                <h4 class="text-xl font-bold uppercase tracking-widest">Natural Drinks</h4>
+            </div>
+            <div class="scroll-reveal" style="transition-delay: 0.4s;">
+                <span class="text-5xl block mb-4">🎊</span>
+                <h4 class="text-xl font-bold uppercase tracking-widest">Event Catering</h4>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Interactive Menu -->
+    <!-- The Menu (No Prices) -->
     <section id="menu" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto text-center mb-20 scroll-reveal">
-            <h2 class="text-6xl md:text-8xl font-black mb-6">Our <span class="text-orange-600">Creations.</span></h2>
-            <p class="text-2xl text-gray-500 max-w-2xl mx-auto">Made with natural ingredients and a dash of Norie's
-                secret touch.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            <!-- Bread -->
-            <div class="food-card-white scroll-reveal">
-                <div class="h-80 relative overflow-hidden group">
-                    <img src="assets/bread.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div
-                        class="absolute top-6 left-6 bg-white px-6 py-2 rounded-full font-black uppercase text-xs shadow-lg">
-                        Bestseller</div>
-                </div>
-                <div class="p-10">
-                    <h3 class="text-4xl font-black mb-4 italic">Gourmet Bread</h3>
-                    <p class="text-gray-500 text-lg mb-10 leading-relaxed">Golden, pillowy loaves baked with premium
-                        butter. No Bromate, all love.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl font-black text-orange-600">₦1,200</span>
-                        <a href="https://wa.me/2348028477776?text=Order:%20Bread"
-                            class="bg-orange-50 text-orange-600 px-8 py-3 rounded-2xl font-black hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-widest">Order</a>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 scroll-reveal">
+                <h2 class="section-title">Norie's <span class="text-orange-500 italic">Favorites</span></h2>
+                <p class="text-xl text-gray-500 font-medium">Baked with love, delivered with care.</p>
             </div>
 
-            <!-- Chops -->
-            <div class="food-card-white scroll-reveal" style="transition-delay: 0.2s;">
-                <div class="h-80 relative overflow-hidden group">
-                    <img src="assets/chops.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                </div>
-                <div class="p-10">
-                    <h3 class="text-4xl font-black mb-4 italic">Party Box</h3>
-                    <p class="text-gray-500 text-lg mb-10 leading-relaxed">Samosa, Springroll, Peppered Meat &
-                        Puff-Puff. The life of the party.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl font-black text-orange-600">₦2,500</span>
-                        <a href="https://wa.me/2348028477776?text=Order:%20Chops"
-                            class="bg-orange-50 text-orange-600 px-8 py-3 rounded-2xl font-black hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-widest">Order</a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Product: Bread -->
+                <div class="food-card scroll-reveal">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="assets/bread.jpg"
+                            class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-3xl font-bold mb-4">Gourmet Bread</h3>
+                        <p class="text-gray-500 leading-relaxed mb-8">Golden-crusted, pillowy soft loaves baked with
+                            premium butter and yeast. No Bromate.</p>
+                        <a href="https://wa.me/2348028477776?text=Order:%20Gourmet%20Bread"
+                            class="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-brown-800 transition">Select
+                            Item</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Zobo -->
-            <div class="food-card-white scroll-reveal" style="transition-delay: 0.4s;">
-                <div class="h-80 relative overflow-hidden group">
-                    <img src="assets/zobo.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <!-- Product: Chops -->
+                <div class="food-card scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="assets/chops.jpg"
+                            class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-3xl font-bold mb-4">Small Chops Box</h3>
+                        <p class="text-gray-500 leading-relaxed mb-8">Samosa, Springroll, Peppered Meat & Puff-Puff. The
+                            life of every celebration.</p>
+                        <a href="https://wa.me/2348028477776?text=Order:%20Small%20Chops%20Box"
+                            class="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-brown-800 transition">Select
+                            Item</a>
+                    </div>
                 </div>
-                <div class="p-10">
-                    <h3 class="text-4xl font-black mb-4 italic">Natural Zobo</h3>
-                    <p class="text-gray-500 text-lg mb-10 leading-relaxed">Pure Hibiscus infusion with fresh Ginger &
-                        Mint. No additives.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl font-black text-orange-600">₦800</span>
-                        <a href="https://wa.me/2348028477776?text=Order:%20Zobo"
-                            class="bg-orange-50 text-orange-600 px-8 py-3 rounded-2xl font-black hover:bg-orange-600 hover:text-white transition uppercase text-sm tracking-widest">Order</a>
+
+                <!-- Product: Zobo -->
+                <div class="food-card scroll-reveal" style="transition-delay: 0.4s;">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="assets/zobo.jpg"
+                            class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-10 text-center">
+                        <h3 class="text-3xl font-bold mb-4">Natural Zobo</h3>
+                        <p class="text-gray-500 leading-relaxed mb-8">Pure Hibiscus infusion with fresh Ginger & Mint.
+                            No additives, purely refreshing.</p>
+                        <a href="https://wa.me/2348028477776?text=Order:%20Natural%20Zobo"
+                            class="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-brown-800 transition">Select
+                            Item</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Catering Section -->
-    <section id="about" class="bg-white py-40 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-24">
-            <div class="md:w-1/2 relative scroll-reveal">
-                <div class="rounded-[80px] overflow-hidden shadow-2xl skew-x-1 hover:skew-x-0 transition duration-700">
-                    <img src="assets/platter.jpg" class="w-full h-full object-cover">
-                </div>
-                <div
-                    class="absolute -bottom-10 -right-10 bg-orange-600 text-white p-12 rounded-full shadow-2xl font-black text-center text-xl leading-none">
-                    TRUSTED BY<br>FAMILIES
-                </div>
-            </div>
-            <div class="md:w-1/2 scroll-reveal" style="transition-delay: 0.3s;">
-                <h2 class="text-6xl md:text-8xl font-black mb-8 leading-none">Events <br>Redefined.</h2>
-                <p class="text-2xl text-gray-500 mb-12 italic">Whether it's a small meeting or a grand wedding, we bring
-                    the aroma and the taste of Norie Concepts to your doorstep.</p>
-                <div class="space-y-6 mb-12">
-                    <div class="flex items-center gap-6">
-                        <div
-                            class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-xl font-bold">
-                            01</div>
-                        <p class="text-2xl font-bold">Standard Mini Packs</p>
-                    </div>
-                    <div class="flex items-center gap-6">
-                        <div
-                            class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-xl font-bold">
-                            02</div>
-                        <p class="text-2xl font-bold">Corporate Meeting Platters</p>
-                    </div>
-                </div>
-                <button class="btn-nori text-xl italic uppercase tracking-[4px]">Book an Inquiry</button>
+    <!-- Lookbook / Gallery -->
+    <section class="bg-white py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="columns-2 md:columns-4 gap-6 space-y-6">
+                <img src="assets/gallery1.jpg" class="rounded-3xl shadow-sm scroll-reveal">
+                <img src="assets/gallery2.jpg" class="rounded-3xl shadow-sm scroll-reveal"
+                    style="transition-delay: 0.1s;">
+                <img src="assets/gallery3.jpg" class="rounded-3xl shadow-sm scroll-reveal"
+                    style="transition-delay: 0.2s;">
+                <img src="assets/gallery4.jpg" class="rounded-3xl shadow-sm scroll-reveal"
+                    style="transition-delay: 0.3s;">
+                <img src="assets/gallery5.jpg" class="rounded-3xl shadow-sm scroll-reveal">
+                <img src="assets/gallery6.jpg" class="rounded-3xl shadow-sm scroll-reveal">
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-nori-brown text-white py-24 px-6 text-center">
-        <img src="assets/main_logo.jpg" class="w-24 h-24 rounded-3xl mx-auto mb-10 shadow-2xl" alt="Footer Logo">
-        <h2 class="text-4xl font-black italic mb-8 uppercase tracking-[10px]">Norie Concepts</h2>
-        <div class="flex justify-center gap-12 mb-16 text-3xl opacity-50">
-            <span class="hover:opacity-100 transition cursor-pointer italic">Instagram</span>
-            <span class="hover:opacity-100 transition cursor-pointer italic">WhatsApp</span>
-            <span class="hover:opacity-100 transition cursor-pointer italic">Facebook</span>
-        </div>
-        <p class="text-white/30 font-bold uppercase tracking-widest text-sm italic">© 2026 Norie Concepts Limited. Just
-            Love, Freshly Baked.</p>
+    <footer class="py-20 text-center border-t border-gray-100">
+        <img src="assets/main_logo.jpg" class="w-20 h-20 rounded-2xl mx-auto mb-10" alt="Norie Logo">
+        <p class="text-gray-400 font-bold uppercase tracking-[10px] text-xs">Norie Concepts</p>
+        <p class="mt-6 text-gray-300 text-sm">© 2026 Norie Concepts Limited. Cook & Bake with Love.</p>
     </footer>
 
     <script>
