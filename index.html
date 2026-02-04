@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norie Concepts | Premium Snacks, Natural Drinks & Catering</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Norie Concepts: The ultimate plug for premium small chops, gourmet bread, custom cakes, and 100% natural drinks like Zobo and Kunu. Order fresh daily in Lagos.">
+    <meta name="keywords"
+        content="Small Chops Lagos, Gourmet Bread, Zobo Drink, Kunu, Catering Services Nigeria, Norie Concepts, Cooking Lessons">
+    <meta name="author" content="Norie Concepts">
+
+    <!-- OpenGraph Social Tags (How it looks on WhatsApp/Socials) -->
+    <meta property="og:title" content="Norie Concepts | Snacks • Drinks • Catering">
+    <meta property="og:description"
+        content="Freshly baked bread, crispy small chops, and natural drinks delivered to your door.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://norieconcepts.com">
+    <!-- Image for sharing -->
+    <meta property="og:image" content="assets/share-image.jpg">
+    </path>
+    </svg>
+    <span id="cart-count"
+        class="absolute -top-3 -right-3 bg-orange-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border-2 border-[#3E2723]">0</span>
+    </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar"
+        class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-[60] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b flex justify-between items-center bg-orange-50">
+            <h3 class="text-2xl font-bold accent-orange">Your Order</h3>
+            <button id="close-cart" class="text-gray-500 hover:text-black">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Items populated by JS -->
+            <p class="text-gray-400 text-center py-20 italic">Your kitchen is currently empty...</p>
+        </div>
+        <div class="p-6 border-t bg-gray-50">
+            <div class="flex justify-between text-xl font-bold mb-6">
+                <span>Total</span>
+                <span id="cart-total">₦0</span>
+            </div>
+            <button id="checkout-btn" class="w-full btn-premium text-white py-4 rounded-xl text-lg font-bold">Check out
+                via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- FOMO Notification -->
+    <div id="fomo-toast"
+        class="fixed bottom-8 left-8 z-50 bg-white p-4 rounded-2xl shadow-xl border border-orange-100 transform -translate-x-full transition-transform duration-500 flex items-center gap-4">
+        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-xl">🔥</div>
+        <div>
+            <p id="fomo-text" class="text-sm font-medium text-gray-800">Someone just ordered Small Chops!</p>
+            <p class="text-xs text-gray-400">2 minutes ago</p>
+        </div>
+    </div>
+
+    <!-- Social Media Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-2xl font-bold accent-orange uppercase tracking-widest">Norie</span>
+                    <span class="text-2xl font-light">Concepts</span>
+                </div>
+                <p class="text-gray-500 max-w-sm mb-6 leading-relaxed">The ultimate plug for premium snacks, natural
+                    drinks, and professional catering. Transforming every meal into a celebration.</p>
+                <div class="flex gap-4">
+                    <!-- Social Icons (Placeholders) -->
+                    <div
+                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
+                        IG</div>
+                    <div
+                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
+                        FB</div>
+                    <div
+                        class="w-10 h-10 border border-orange-200 rounded-full flex items-center justify-center hover:bg-orange-50 cursor-pointer">
+                        TK</div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Explore</h4>
+                <ul class="space-y-4 text-gray-500 font-medium">
+                    <li><a href="#" class="hover:text-orange-600">Home</a></li>
+                    <li><a href="#menu" class="hover:text-orange-600">Our Menu</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Cooking Lessons</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Catering Inquiry</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Contact Us</h4>
+                <ul class="space-y-4 text-gray-500 font-medium">
+                    <li>+234 (0) 802 847 7776</li>
+                    <li>Lagos, Nigeria</li>
+                    <li>order@norieconcepts.com</li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-sm font-medium text-gray-400 gap-4">
+            <p>© 2026 Norie Concepts Limited. All Rights Reserved.</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-gray-600">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-600">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const cart = [];
+        const menuItems = {
+            'bread': { name: 'Gourmet Bread', price: 1200 },
+            'zobo': { name: 'Premium Zobo', price: 800 },
+            'chops': { name: 'Small Chops Box', price: 2500 }
+        };
+
+        function updateCart() {
+            const itemsList = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const countEl = document.getElementById('cart-count');
+            const trigger = document.getElementById('cart-trigger');
+
+            if (cart.length === 0) {
+                itemsList.innerHTML = '<p class="text-gray-400 text-center py-20 italic">Your kitchen is currently empty...</p>';
+                totalEl.innerText = '₦0';
+                countEl.innerText = '0';
+                trigger.classList.add('hidden');
+                return;
+            }
+
+            trigger.classList.remove('hidden');
+            let total = 0;
+            itemsList.innerHTML = cart.map((item, index) => {
+                total += item.price * item.qty;
+                return `
+                    <div class="flex justify-between items-center p-4 bg-orange-50 rounded-2xl">
+                        <div>
+                            <h4 class="font-bold">${item.name}</h4>
+                            <p class="text-sm text-gray-500">₦${item.price} x ${item.qty}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 text-xs font-bold uppercase">Remove</button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = `₦${total.toLocaleString()}`;
+            countEl.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+        }
+
+        function addToCart(id) {
+            const product = menuItems[id];
+            const existing = cart.find(item => item.name === product.name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCart();
+            document.getElementById('cart-sidebar').classList.remove('translate-x-full');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        document.getElementById('cart-trigger').onclick = () => {
+            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
+        };
+
+        document.getElementById('close-cart').onclick = () => {
+            document.getElementById('cart-sidebar').classList.add('translate-x-full');
+        };
+
+        document.getElementById('checkout-btn').onclick = () => {
+            let message = "Hi Norie Concepts! I'd like to place an order: \n\n";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.qty}x ${item.name} (₦${(item.price * item.qty).toLocaleString()})\n`;
+                total += item.price * item.qty;
+            });
+            message += `\nTotal: ₦${total.toLocaleString()}\n\nDelivery Location: [Please enter your address]`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/2348028477776?text=${encoded}`);
+        };
+
+        // FOMO Notifications
+        const fomoMessages = [
+            "Sarah just ordered a Party Platter XL!",
+            "David just bought 10 bottles of Zobo!",
+            "Someone in Ikeja ordered Gourmet Bread!",
+            "A wedding inquiry just arrived for Saturday!"
+        ];
+
+        function showFomo() {
+            const toast = document.getElementById('fomo-toast');
+            const text = document.getElementById('fomo-text');
+            text.innerText = fomoMessages[Math.floor(Math.random() * fomoMessages.length)];
+
+            toast.classList.remove('-translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('-translate-x-full');
+            }, 4000);
+        }
+
+        // Add event listeners to "Add to Cart" buttons
+        document.querySelectorAll('a[href*="Order:"]').forEach(btn => {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                const url = btn.getAttribute('href');
+                if (url.includes('Bread')) addToCart('bread');
+                if (url.includes('Zobo')) addToCart('zobo');
+                if (url.includes('Chops')) addToCart('chops');
+            };
+        });
+
+        // Initialize FOMO
+        setInterval(showFomo, 15000);
+        setTimeout(showFomo, 5000);
+    </script>
+    </body>
+
+</html>
